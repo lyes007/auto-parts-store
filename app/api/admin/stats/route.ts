@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 
 export async function GET() {
   try {
-    const [totalProducts, totalOrders, lowStockItems, totalRevenue] = await Promise.all([
+    const [totalProducts, totalOrders, lowStockItems] = await Promise.all([
       db.product.count(),
       db.order.count(),
       db.product.count({
@@ -13,18 +13,22 @@ export async function GET() {
           },
         },
       }),
-      db.order.aggregate({
-        _sum: {
-          totalAmount: true,
-        },
-      }),
     ])
+
+    // Calculate total revenue using a different approach
+    const revenueResult = await db.order.findMany({
+      select: {
+        totalAmount: true,
+      },
+    })
+
+    const totalRevenue = revenueResult.reduce((sum, order) => sum + order.totalAmount, 0)
 
     const stats = {
       totalProducts,
       totalOrders,
       lowStockItems,
-      totalRevenue: totalRevenue._sum.totalAmount || 0,
+      totalRevenue,
     }
 
     return NextResponse.json(stats)
