@@ -12,6 +12,10 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Ensure CSS is properly processed in production
+  experimental: {
+    optimizePackageImports: ['@radix-ui/react-icons'],
+  },
 }
 
 export default nextConfig
