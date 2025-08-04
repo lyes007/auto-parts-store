@@ -1,5 +1,5 @@
-import { db } from "@/lib/db"
-import type { Product } from "@/lib/db"
+// import { db } from "@/lib/db"
+// import type { Product } from "@/lib/db"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -25,26 +25,72 @@ import {
 } from "lucide-react"
 import MobileMenu from "@/components/mobile-menu"
 
-async function getProducts(): Promise<Product[]> {
-  const products = await db.product.findMany({
-    take: 6,
-    orderBy: {
-      createdAt: "desc",
-    },
-    include: {
-      reviews: true,
-      _count: {
-        select: {
-          reviews: true,
-        },
-      },
-    },
-  })
-  return products
-}
+// Mock products data
+const mockProducts = [
+  {
+    id: 1,
+    name: "Premium Brake Pads",
+    price: "299.99",
+    category: "Brake System",
+    description: "High-quality brake pads for optimal stopping power and durability.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=brake pads",
+    stockQuantity: 50,
+    _count: { reviews: 12 }
+  },
+  {
+    id: 2,
+    name: "LED Headlight Bulbs",
+    price: "89.99",
+    category: "Lighting",
+    description: "Bright LED headlight bulbs for improved visibility and safety.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=led bulbs",
+    stockQuantity: 25,
+    _count: { reviews: 8 }
+  },
+  {
+    id: 3,
+    name: "Air Filter Set",
+    price: "45.99",
+    category: "Engine",
+    description: "High-performance air filters for better engine performance.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=air filter",
+    stockQuantity: 100,
+    _count: { reviews: 15 }
+  },
+  {
+    id: 4,
+    name: "Oil Filter",
+    price: "32.99",
+    category: "Engine",
+    description: "Quality oil filters for engine protection and longevity.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=oil filter",
+    stockQuantity: 75,
+    _count: { reviews: 6 }
+  },
+  {
+    id: 5,
+    name: "Spark Plugs Set",
+    price: "67.99",
+    category: "Engine",
+    description: "Premium spark plugs for optimal ignition performance.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=spark plugs",
+    stockQuantity: 40,
+    _count: { reviews: 9 }
+  },
+  {
+    id: 6,
+    name: "Wiper Blades",
+    price: "28.99",
+    category: "Exterior",
+    description: "Durable wiper blades for clear visibility in all weather.",
+    imageUrl: "/placeholder.svg?height=300&width=400&query=wiper blades",
+    stockQuantity: 60,
+    _count: { reviews: 11 }
+  }
+]
 
-export default async function HomePage() {
-  const products = await getProducts()
+export default function HomePage() {
+  const products = mockProducts
 
   return (
     <div className="min-h-screen overflow-x-hidden">
