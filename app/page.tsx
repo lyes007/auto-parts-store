@@ -23,6 +23,7 @@ import {
   Heart,
   Eye,
 } from "lucide-react"
+import MobileMenu from "@/components/mobile-menu"
 
 async function getProducts(): Promise<Product[]> {
   const products = await db.product.findMany({
@@ -612,55 +613,7 @@ export default async function HomePage() {
         </div>
       </footer>
 
-      {/* Mobile Menu Script */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.mobile-menu-toggle');
-            const menuClose = document.querySelector('.mobile-menu-close');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const menuPanel = mobileMenu.querySelector('div');
-            
-            menuToggle.addEventListener('click', function() {
-              mobileMenu.classList.remove('hidden');
-              setTimeout(() => {
-                menuPanel.classList.remove('translate-x-full');
-              }, 10);
-            });
-            
-            function closeMenu() {
-              menuPanel.classList.add('translate-x-full');
-              setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-              }, 300);
-            }
-            
-            menuClose.addEventListener('click', closeMenu);
-            mobileMenu.addEventListener('click', function(e) {
-              if (e.target === mobileMenu) {
-                closeMenu();
-              }
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-              anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                  target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
-                  closeMenu();
-                }
-              });
-            });
-          });
-        `,
-        }}
-      />
+      <MobileMenu />
     </div>
   )
 }

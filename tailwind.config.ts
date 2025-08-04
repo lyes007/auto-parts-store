@@ -31,6 +31,10 @@ const config: Config = {
           green: "#1DCD9F",
           "green-dark": "#169976",
         },
+        "primary-green": "#1DCD9F",
+        "primary-green-dark": "#169976",
+        "primary-black": "#000000",
+        "primary-dark": "#222222",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
