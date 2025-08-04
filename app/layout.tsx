@@ -36,10 +36,6 @@ export default function RootLayout({
         }} />
       </head>
       <body className={inter.className}>
-        <div className="bg-blue-500 text-white p-4 rounded-lg">
-          Tailwind Test - This should be blue with white text and rounded corners
-        </div>
-        <div className="test-css">CSS Test - If you see this in red, CSS is working</div>
         {children}
       </body>
     </html>
