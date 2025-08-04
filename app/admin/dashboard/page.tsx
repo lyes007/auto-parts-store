@@ -217,7 +217,10 @@ export default function AdminDashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Quick Actions</h3>
               <div className="space-y-2 sm:space-y-3">
-                <button className="w-full flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 bg-primary-green text-white rounded-lg hover:bg-primary-green-dark transition-colors text-sm sm:text-base">
+                <button 
+                  onClick={() => router.push("/admin/products/new")}
+                  className="w-full flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 bg-primary-green text-white rounded-lg hover:bg-primary-green-dark transition-colors text-sm sm:text-base"
+                >
                   <Plus className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Add New Product
                 </button>
@@ -271,7 +274,10 @@ export default function AdminDashboard() {
               columns={productColumns}
               data={products}
               actions={
-                <button className="flex items-center px-3 sm:px-4 py-2 bg-primary-green text-white rounded-lg hover:bg-primary-green-dark transition-colors text-xs sm:text-sm">
+                <button 
+                  onClick={() => router.push("/admin/products/new")}
+                  className="flex items-center px-3 sm:px-4 py-2 bg-primary-green text-white rounded-lg hover:bg-primary-green-dark transition-colors text-xs sm:text-sm"
+                >
                   <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Add Product
                 </button>

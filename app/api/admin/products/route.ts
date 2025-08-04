@@ -10,10 +10,13 @@ export async function GET() {
       select: {
         id: true,
         name: true,
+        description: true,
         price: true,
         category: true,
+        imageUrl: true,
         stockQuantity: true,
         createdAt: true,
+        updatedAt: true,
       },
     })
 
