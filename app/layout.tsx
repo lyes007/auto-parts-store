@@ -1,7 +1,7 @@
+import "./globals.css"
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,8 +20,23 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            body { 
+              background-color: white !important; 
+              color: black !important; 
+              font-family: Arial, sans-serif !important;
+            }
+            .test-css { 
+              background-color: red !important; 
+              color: white !important; 
+              padding: 10px !important;
+            }
+          `
+        }} />
       </head>
       <body className={inter.className}>
+        <div className="test-css">CSS Test - If you see this in red, CSS is working</div>
         {children}
       </body>
     </html>
