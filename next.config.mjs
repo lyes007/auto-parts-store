@@ -12,6 +12,10 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Ensure CSS is properly handled
+  experimental: {
+    optimizeCss: true,
+  },
 }
 
 export default nextConfig

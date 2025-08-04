@@ -1,5 +1,10 @@
-{
-  "buildCommand": "prisma generate && next build",
-  "installCommand": "pnpm install",
-  "framework": "nextjs"
-} 
+ {
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "functions": {
+    "app/**/*.{js,ts,jsx,tsx}": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}

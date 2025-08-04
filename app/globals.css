@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Test if Tailwind is working */
+.tailwind-test {
+  @apply bg-red-500 text-white p-4;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
